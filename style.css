@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+#grid {
+    border: 5px solid #1a1a1a;
+    display: flex;
+    flex-wrap: wrap;
+    height: 700px;
+    aspect-ratio: 1 / 1;
+    margin: auto;
+}
