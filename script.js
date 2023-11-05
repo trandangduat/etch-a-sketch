@@ -12,6 +12,28 @@ function createSquareCanvasWithGivenLength (L) {
             canvas.appendChild(squarePixel);
         }
     }
+    draw();
 }
 
-createSquareCanvasWithGivenLength(16);
+let mouseDown = false;
+document.body.onmousedown = function() {
+    mouseDown = true;
+}
+document.body.onmouseup = function() {
+    mouseDown = false;
+}
+
+function draw() {
+    let allPixels = document.querySelectorAll("#grid div");
+    allPixels.forEach((pixel) => {
+        pixel.addEventListener("mouseover", () => {
+            if (mouseDown) {        
+                console.log("hi");
+                pixel.style.cssText += "background: black;";
+            }
+        });
+    });
+}
+
+// console.log("hihiiii");
+createSquareCanvasWithGivenLength(100);
