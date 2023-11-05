@@ -16,24 +16,18 @@ function createSquareCanvasWithGivenLength (L) {
 }
 
 let mouseDown = false;
-document.body.onmousedown = function() {
-    mouseDown = true;
-}
-document.body.onmouseup = function() {
-    mouseDown = false;
+document.body.onmousedown = () => (mouseDown = true);
+document.body.onmouseup = () => (mouseDown = false);
+
+function changeColor(e) {
+    if (!mouseDown) return;
+    e.target.style.backgroundColor = 'black';
 }
 
 function draw() {
     let allPixels = document.querySelectorAll("#grid div");
-    allPixels.forEach((pixel) => {
-        pixel.addEventListener("mouseover", () => {
-            if (mouseDown) {        
-                console.log("hi");
-                pixel.style.cssText += "background: black;";
-            }
-        });
-    });
+    allPixels.forEach((pixel) => pixel.onmouseover = changeColor);
 }
 
 // console.log("hihiiii");
-createSquareCanvasWithGivenLength(100);
+createSquareCanvasWithGivenLength(50);
